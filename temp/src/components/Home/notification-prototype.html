@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intext 알림 프로토타입</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .version-container {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .version-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .main-title {
+            color: #333333;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .phone-mockup {
+            width: 393px;
+            height: 200px;
+            background: #000000;
+            border-radius: 25px;
+            padding: 10px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .time-image {
+            height: 14px;
+            width: auto;
+        }
+
+        .status-icons {
+            height: 10px;
+            width: auto;
+        }
+
+        .notification {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            margin: 10px 15px;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .app-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #19213d 0%, #2d3561 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .app-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+            flex: 1;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .notification-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .notification-body {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        .prototype-label {
+            color: #333333;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .variant-label {
+            display: none;
+        }
+
+        .description {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-title">intext 앱 알림 프로토타입</div>
+    
+    <div class="version-container">
+        <!-- 학생 버전 -->
+        <div class="version-section">
+            <div class="prototype-label">학생 ver.</div>
+            
+            <!-- 알림 버전 1: 학습 동기 부여형 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">오늘의 AI 학습 꿀팁 📚</div>
+                        <div class="notification-body">10분이면 완성! 강의자료 요약 프롬프트로 공부 효율 200% 높이기</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 2: 호기심 유발형 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">이 프롬프트, 아직 안 써봤다면? 🤔</div>
+                        <div class="notification-body">ChatGPT로 시험 문제 예상하는 비법, 지금 확인해보세요</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 3: 시간 절약 강조형 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">30초 프롬프트로 1시간 단축 ⏰</div>
+                        <div class="notification-body">논문 요약부터 과제 구조화까지, intext와 함께라면 간단해요</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 4: FOMO 활용형 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">다른 학생들은 이미 사용 중... 👥</div>
+                        <div class="notification-body">성적 올리는 AI 프롬프트 활용법, 놓치면 후회할 걸요?</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 5: 성과 중심형 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">성적 상위 10% 학생들의 비밀 🏆</div>
+                        <div class="notification-body">팩트체크부터 자료정리까지, 검증된 프롬프트로 학습 혁신하기</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 직장인 버전 -->
+        <div class="version-section">
+            <div class="prototype-label">직장인 ver.</div>
+            
+            <!-- 알림 버전 1: 업무 효율성 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">업무 효율 3배 높이는 AI 비법 💼</div>
+                        <div class="notification-body">회의록 정리부터 기획서 작성까지, 5분이면 끝나는 프롬프트 활용법</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 2: 개발자 특화 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">개발자라면 이 프롬프트 필수! 💻</div>
+                        <div class="notification-body">코드 리뷰부터 API 문서까지, ChatGPT로 개발 속도 10배 향상</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 3: 시간 관리 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">야근 없는 직장인의 비밀 🕐</div>
+                        <div class="notification-body">업무 자동화 프롬프트로 정시 퇴근하는 방법, 지금 공개</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 4: 경쟁력 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">동료들이 모르는 AI 활용법 🚀</div>
+                        <div class="notification-body">승진하는 직장인들의 공통점, 바로 이 프롬프트 사용!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 알림 버전 5: 성과 중심 -->
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <img src="./time.svg" alt="9:41" class="time-image" />
+                        <img src="./Container.svg" alt="Status icons" class="status-icons" />
+                    </div>
+                    <div class="notification">
+                        <div class="notification-header">
+                            <div class="app-icon">in</div>
+                            <div class="app-name">intext</div>
+                            <div class="time">지금</div>
+                        </div>
+                        <div class="notification-title">TOP 성과자들의 업무 스킬 📈</div>
+                        <div class="notification-body">데이터 분석부터 보고서 작성까지, 검증된 프롬프트로 성과 극대화</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
